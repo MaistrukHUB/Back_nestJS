@@ -27,13 +27,13 @@ export class UsersService {
     }
     async publicUser(email:string){
         return this.userRepository.findOne({
-            where:{email},
-            attributes:{exclude:['password']},
-            include:{
-                model:Watchlist,
-                required:false,
+            where: {email},
+            attributes: {exclude: ['password']},
+            include: {
+              model: Watchlist,
+              required: false
             }
-        })
+          })
     }
     async updateUser(email:string, dto:UpdateUserDTO):Promise<UpdateUserDTO>{
         await this.userRepository.update(dto, {where:{email}})
